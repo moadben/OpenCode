@@ -1,15 +1,13 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/moadben/OpenCode/databases"
 )
-
-// Flags passed in
-type Flags struct {
-	DBConn string
-}
 
 // Projects is...
 func Projects(c *gin.Context) {
@@ -29,7 +27,19 @@ func Index(c *gin.Context) {
 }
 
 func main() {
+	//Flag initialization
+	DBConn := flag.String("DB", "test", "DB Connection string for ")
+	flag.Parse()
 
+	//DB setup
+	fmt.Println(*DBConn)
+	db, err := databases.NewDocDB(*DBConn)
+	if err != nil {
+		panic(err)
+	}
+	defer db.Session.Close()
+
+	//Running of server
 	r := gin.Default()
 	//setting html folder in templates
 	r.LoadHTMLGlob("templates/*")

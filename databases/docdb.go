@@ -1,10 +1,11 @@
-package db
+package databases
 
 import (
-	"errors"
+	"crypto/tls"
+	"fmt"
+	"net"
 
 	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
 )
 
 // A DocDB Object
@@ -14,36 +15,52 @@ type DocDB struct {
 
 // NewDocDB creates and returns a new DocumentDB connection
 func NewDocDB(conn string) (DocDB, error) {
-	session, err := mgo.Dial(conn)
-	if err != nil {
-		return DocDB{}, errors.New("Could not connect to DocDB server")
-	}
-	defer session.Close()
+	// WORK AROUND FOR SSL //
+	tlsConfig := &tls.Config{}
+	tlsConfig.InsecureSkipVerify = true
 
-	// Optional. Switch the session to a monotonic behavior.
-	session.SetMode(mgo.Monotonic, true)
+	dialInfo, err := mgo.ParseURL(conn)
+
+	if err != nil {
+		return DocDB{}, err
+	}
+
+	dialInfo.DialServer = func(addr *mgo.ServerAddr) (net.Conn, error) {
+		conn, err := tls.Dial("tcp", addr.String(), tlsConfig)
+		return conn, err
+	}
+
+	// Actual connection
+	session, err := mgo.DialWithInfo(dialInfo)
+	if err != nil {
+		return DocDB{}, err
+	}
 
 	return DocDB{session}, nil
 }
 
 // ReturnProjects is...
 func (d *DocDB) ReturnProjects() (*[]Project, error) {
+	d.Session.Refresh()
 	Coll := d.Session.DB("opencode").C("projects")
-	result := new([]Project)
-	err := Coll.Find(bson.M{}).All(&result)
-	return result, err
+	var result []Project
+	err := Coll.Find(nil).All(&result)
+	return &result, err
 }
 
 // ReturnIdeas is...
 func (d *DocDB) ReturnIdeas() (*[]Idea, error) {
+	d.Session.Refresh()
 	Coll := d.Session.DB("opencode").C("ideas")
-	result := new([]Idea)
-	err := Coll.Find(bson.M{}).All(&result)
-	return result, err
+	var result []Idea
+	err := Coll.Find(nil).All(&result)
+	return &result, err
 }
 
 // InsertProject is...
 func (d *DocDB) InsertProject(Proj Project) error {
+	d.Session.Refresh()
+	fmt.Println(Proj)
 	Coll := d.Session.DB("opencode").C("projects")
 	err := Coll.Insert(&Proj)
 	return err
@@ -51,6 +68,7 @@ func (d *DocDB) InsertProject(Proj Project) error {
 
 // InsertIdea is...
 func (d *DocDB) InsertIdea(Idea Idea) error {
+	d.Session.Refresh()
 	Coll := d.Session.DB("opencode").C("ideas")
 	err := Coll.Insert(&Idea)
 	return err
