@@ -6,6 +6,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Flags passed in
+type Flags struct {
+	DBConn string
+}
+
 // Projects is...
 func Projects(c *gin.Context) {
 	c.String(http.StatusOK, "wagwaan")
@@ -24,6 +29,7 @@ func Index(c *gin.Context) {
 }
 
 func main() {
+
 	r := gin.Default()
 	//setting html folder in templates
 	r.LoadHTMLGlob("templates/*")
