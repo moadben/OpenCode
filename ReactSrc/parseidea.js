@@ -27,7 +27,7 @@ var Pidea = React.createClass({
               <p>{idea.description}</p>
               <ul>
                 {
-                  idea.discussion.map(comment => <li key={comment.comment}>{comment.comment}</li>)
+                  idea.discussion.comments.map(comment => <li key={comment.comment}>{comment.comment}</li>)
                 }
               </ul>
               <hr></hr>
@@ -39,32 +39,6 @@ var Pidea = React.createClass({
     );
   }
 });
-
-// var IdeaList = React.createClass({
-//   render: function() {
-//     var {ideas} = this.props;
-//     var renderIdeas = () => {
-//       return ideas.map(idea => {
-//         return (
-//           <Idea key={idea.title} name={idea.description} value={}
-//         );
-//       }
-//     }
-//   }
-// });
-
-// var CommentList = React.createClass({
-//   render: function() {
-//     var {comments} = this.props;
-//     var renderComments = () => {
-//       return ideas.map(idea => {
-//         return (
-//           <Idea key={idea.title} name={idea.description} value={}
-//         );
-//       }
-//     }
-//   }
-// });
 
 
 ReactDOM.render(<Pidea/>, document.getElementById('blah'));
