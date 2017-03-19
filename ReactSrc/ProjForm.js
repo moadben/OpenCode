@@ -5,6 +5,10 @@ var ProjForm = React.createClass({
     onSubmit: React.PropTypes.func.isRequired,
   },
 
+  onDifficultyChange: function(e) {
+    this.props.onChange(Object.assign({}, this.props.value, {difficulty: e.target.value}));
+  },
+
   onTitleChange: function(e) {
     this.props.onChange(Object.assign({}, this.props.value, {title: e.target.value}));
   },
@@ -42,7 +46,6 @@ var ProjForm = React.createClass({
 
   render: function(){
     var errors = this.props.value.errors || {};
-
     return(
       React.createElement('form', {onSubmit: this.onSubmit, className: 'ProjForm', noValidate: true},
         React.createElement('input', {
@@ -66,10 +69,10 @@ var ProjForm = React.createClass({
           value: this.props.value.description,
           onChange: this.onDescriptionChange,
         }),
-        React.createElement('input', {
+        React.createElement('textarea', {
           type: 'text',
           className: errors.dependency && 'ProjForm-error',
-          placeholder: 'Dependencies (required)',
+          placeholder: 'Dependencies (required) e.g.: node , build-essential',
           value: this.props.value.dependency,
           onChange: this.onDependencyChange,
         }),
