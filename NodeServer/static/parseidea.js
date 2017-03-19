@@ -18,8 +18,7 @@ var Pidea = React.createClass({
   render: function() {
     var {ideas} = this.state;
     return (
-      <div><p>IDEA</p>
-      <p>Description</p>
+      <div>
         {
             ideas.map(idea => {
             return (
