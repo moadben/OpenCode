@@ -24,7 +24,7 @@ type Project struct {
 	ProjectName string     `json:"projectname"`
 	TimeStamp   time.Time  `json:"timestamp"`
 	Discussion  Discussion `json:"discussion"`
-	Languages   []string   `json:"languages"`
+	Dependency  []string   `json:"dependency"`
 	AppPort     string     `json:"appport"`
 	InitCommand string     `json:"initcommand"`
 	RunCommand  string     `json:"runcommand"`
