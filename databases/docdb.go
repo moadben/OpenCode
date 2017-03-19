@@ -40,8 +40,24 @@ func NewDocDB(conn string) (DocDB, error) {
 	if err != nil {
 		return DocDB{}, err
 	}
-
-	return DocDB{session, 0, 0}, nil
+	db := DocDB{session, 0, 0}
+	// SETTING PROJCOUNTER
+	projects, err := db.ReturnProjects()
+	if len(*projects) != 0 {
+		x := len(*projects) - 1
+		y := *projects
+		projCounter := y[x].ProjectID
+		db.ProjectCounter = projCounter + 1
+	}
+	// SETTING IDEACOUNTER
+	ideas, err := db.ReturnIdeas()
+	if len(*ideas) != 0 {
+		x := len(*ideas) - 1
+		z := *ideas
+		ideaCounter := z[x].IdeaID
+		db.IdeaCounter = ideaCounter + 1
+	}
+	return db, nil
 }
 
 // ReturnProjects is...
