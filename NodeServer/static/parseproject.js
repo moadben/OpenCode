@@ -6,7 +6,7 @@ var Pproject = React.createClass({
   },
 
   componentDidMount: async function() {
-    const request = await fetch('http://opencode.me:8080/projects');
+    const request = await fetch('http://localhost:8080/projects');
     const projects = await request.json();
     this.setState({ projects });
   },
