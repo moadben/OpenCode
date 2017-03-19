@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.js"></script>
   <link rel="stylesheet" type="text/css" href="webfontkit/stylesheet.css">
   <link rel="stylesheet" type="text/css" href="css/home.css">
   <link rel="shortcut icon" href="img/favicon.ico" />
@@ -124,6 +125,8 @@
               </div>
               <hr class="partialLine">
             </div>
+            <script type="text/babel" src="parseproject.js"></script>
+
 
               </div>
         </div>
@@ -152,15 +155,17 @@
                 </div>
               </div>
 
-              <!-- List of all ideas-->
+
+              <!-- List of all ideas PASS THIS TO REACT-->
               <div class="sections" id="ideasSec">
                 <!-- Displayed -->
-                <p>IDEA</p>
-                <p>Description</p>
+                <!-- <p>IDEA</p>
+                <p>Description</p> -->
                 <!-- for Gitprojectname and Gitusername -->
-                <p><img class="colIcons" src="img/comment.png">  Comment !</p>
-                <hr class="partialLine">
+                <!-- <p><img class="colIcons" src="img/comment.png">  Comment !</p>
+                <hr class="partialLine"> -->
               </div>
+              <script type="text/babel" src="parseidea.js"></script>
             </div>
 
       </div>

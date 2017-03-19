@@ -1,6 +1,6 @@
 var Pidea = React.createClass({
   getInitialState: function() {
-    return {
+        return {
       ideas: [],
     };
   },
@@ -18,7 +18,8 @@ var Pidea = React.createClass({
   render: function() {
     var {ideas} = this.state;
     return (
-      <div>
+      <div><p>IDEA</p>
+      <p>Description</p>
         {
             ideas.map(idea => {
             return (
@@ -41,4 +42,4 @@ var Pidea = React.createClass({
 });
 
 
-ReactDOM.render(<Pidea/>, document.getElementById('blah'));
+ReactDOM.render(<Pidea/>, document.getElementById('ideasSec'));
