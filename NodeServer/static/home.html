@@ -64,24 +64,31 @@
                       <br/>
                       <!-- Place this tag where you want the button to render. -->
                       <h3>1. Fork the Repo of the selected project</h3>
+                      <!-- Place this tag in your head or just before your close body tag. -->
+                      <script async defer src="https://buttons.github.io/buttons.js"></script>
                       <a class="github-button" href="https://github.com/soxies1/TestNodeApp/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="/soxies1/TestNodeApp/network" data-count-api="/repos/soxies1/TestNodeApp#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork soxies1/TestNodeApp on GitHub">Fork</a>
                       <br/>
 
                       <ul style="list-style:none;">
                       <script src="js/fileGeneration.js"></script>
                         <li>
-                          X. Open a terminal
+                          a. Open a terminal
                         </li>
                         <li>
-                          X. Create a project folder
-                          <span>mkdir OpenCodeProjects; cd OpenCodeProjects</span>
+                          b. Create a project folder<br/>
+                          <code>mkdir ~/OpenCodeProjects; cd ~/OpenCodeProjects</code>
                         </li>
                         <li>
-                          X. Clone the newly forked repo
-                         <span>git clone #repository link#; cd #repo project name#</span>
+                          c. Clone the newly forked repo<br/>
+                         <code>git clone #repository link#; cd #repo project name#</code>
+                        </li>
+                        <li>
+                          d. Preform either both steps 3 and 4, or just step 5<br/>
+                         <code>git clone #repository link#; cd #repo project name#</code>
                         </li>
                       </ul>
                       <br/>
+
                       <h3>3. Download generated Dockerfile</h3>
                       <button class="docButton" onclick="generateDockerFile(TestNodeApp);">Download Dockerfile</button>
                       <br/>
@@ -89,9 +96,28 @@
                       <h3>4. Download Generated Run Scripts</h3>
                       <button class="docButton" onclick="generateRunScriptFile(TestNodeApp);">Download Run Scripts</button>
                       <br/>
+
+                      <ul style="list-style:none;">
+                        <li>
+                          a. Run the Downloaded Run Script<br/>
+                          <code>chmod x+ opencode.sh; ./opencode.sh</code>
+                        </li>
+                        <li>
+                          b. The environment should be up and running
+                        </li>
+                      </ul>
                       <br/>
                       <h3>5. Or Download Generated Super Script</h3>
                       <button class="docButton" onclick="generateSuperScriptFile(TestNodeApp);">Download Super Script</button>
+                      <ul style="list-style:none;">
+                        <li>
+                          a. Run the Downloaded Run Script<br/>
+                          <code>chmod x+ superScript.sh; ./superScript.sh</code>
+                        </li>
+                        <li>
+                          b. The environment should be up and running
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
