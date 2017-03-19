@@ -5,12 +5,10 @@ const divStyle = {
 };
 
 render(
-  <div>
-      <h1>Open Code</h1>
-      <h2>GIT GOING WITH OPEN SOURCE</h2>
-    </div>,
-    document.getElementById('container')
+  document.getElementById('container')
 )
+
+toHome
 // function splash(){
 //   const splashText =  (
 //     <div id="title">
