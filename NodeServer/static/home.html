@@ -48,58 +48,9 @@
 
               <!-- List of all projects -->
               <div class="sections" id="projectSec">
-                <div>
-                <!-- Displayed -->
-                <p>TITLE</p>
-                <p>Description</p>
 
-                <!--  Modal for start-->
-                <a href="#start">
-                  <p><img class="colIcons" src="img/git.png">  Start!</p>
-                </a>
-                <div id="start" class="modalDialog">
-                  <div> <a href="#close" title="Close" class="close">X</a>
-
-                    <div class="innerModal" id="start">
-                      <h1>Steps to environment set up</h1>
-                      <br/>
-                      <!-- Place this tag where you want the button to render. -->
-                      <h3>1. Fork the Repo of the selected project</h3>
-                      <a class="github-button" href="https://github.com/soxies1/TestNodeApp/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="/soxies1/TestNodeApp/network" data-count-api="/repos/soxies1/TestNodeApp#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork soxies1/TestNodeApp on GitHub">Fork</a>
-                      <br/>
-
-                      <ul style="list-style:none;">
-                      <script src="js/fileGeneration.js"></script>
-                        <li>
-                          X. Open a terminal
-                        </li>
-                        <li>
-                          X. Create a project folder
-                          <span>mkdir OpenCodeProjects; cd OpenCodeProjects</span>
-                        </li>
-                        <li>
-                          X. Clone the newly forked repo
-                         <span>git clone #repository link#; cd #repo project name#</span>
-                        </li>
-                      </ul>
-                      <br/>
-                      <h3>3. Download generated Dockerfile</h3>
-                      <button class="docButton" onclick="generateDockerFile(TestNodeApp);">Download Dockerfile</button>
-                      <br/>
-                      <br/>
-                      <h3>4. Download Generated Run Scripts</h3>
-                      <button class="docButton" onclick="generateRunScriptFile(TestNodeApp);">Download Run Scripts</button>
-                      <br/>
-                      <br/>
-                      <h3>5. Or Download Generated Super Script</h3>
-                      <button class="docButton" onclick="generateSuperScriptFile(TestNodeApp);">Download Super Script</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr class="partialLine">
             </div>
-            <!--<script type="text/babel" src="parseproject.js"></script>-->
+            <script type="text/babel" src="parseproject.js"></script>
 
 
               </div>
