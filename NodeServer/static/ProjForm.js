@@ -7,40 +7,55 @@ var ProjForm = React.createClass({
 
   /* These functions are to make the fields to REACT to changes from user input */
   onDifficultyChange: function(e) {
-    this.props.onChange(Object.assign({}, this.props.value, {difficulty: e.target.value}));
+    
+    //this.props.value.dependency = e.target.value;
+    //this.props.onChange(Object.assign({}, this.props.value, {difficulty: e.target.value}));
   },
 
   onTitleChange: function(e) {
-    this.props.onChange(Object.assign({}, this.props.value, {title: e.target.value}));
+
+    this.props.value.title = e.target.value;
+    //this.props.onChange(Object.assign({}, this.props.value, {title: e.target.value}));
   },
 
   onGiturlChange: function(e) {
-    this.props.onChange(Object.assign({}, this.props.value, {giturl: e.target.value}));
+
+    this.props.value.giturl = e.target.value;
+    //this.props.onChange(Object.assign({}, this.props.value, {giturl: e.target.value}));
   },
   onDescriptionChange: function(e) {
-    this.props.onChange(Object.assign({}, this.props.value, {description: e.target.value}));
+
+    this.props.value.description = e.target.value;
+    //this.props.onChange(Object.assign({}, this.props.value, {description: e.target.value}));
   },
 
   onDependencyChange: function(e) {
-    this.props.onChange(Object.assign({}, this.props.value, {dependency: e.target.value}));
+    this.props.value.dependency = e.target.value.split(" ");
+    //this.props.onChange(Object.assign({}, this.props.value, {dependency: e.target.value}));
   },
 
   onAppportChange: function(e) {
-    this.props.onChange(Object.assign({}, this.props.value, {appport: e.target.value}));
+    
+    this.props.value.appport = e.target.value;
+    //this.props.onChange(Object.assign({}, this.props.value, {appport: e.target.value}));
   },
 
   onInitcommandChange: function(e) {
-    this.props.onChange(Object.assign({}, this.props.value, {initcommand: e.target.value}));
+    
+    this.props.value.initcommand = e.target.value;
+    //this.props.onChange(Object.assign({}, this.props.value, {initcommand: e.target.value}));
   },
 
   onRuncommandChange: function(e) {
-    this.props.onChange(Object.assign({}, this.props.value, {runcommand: e.target.value}));
+    
+    this.props.value.runcommand = e.target.value;
+    //this.props.onChange(Object.assign({}, this.props.value, {runcommand: e.target.value}));
   },
 
   /* Submit function: parse the form object to JSON format */
   onSubmit: function(e) {
     e.preventDefault();
-    this.props.onSubmit();
+    //this.props.onSubmit();
     var json_data = JSON.stringify(this.props.value);
     console.log(json_data);
     fetch('http://opencode.me:8080/add_project', {
@@ -60,49 +75,49 @@ var ProjForm = React.createClass({
           type: 'text',
           className: 'title-field', //&& errors.title && 'ProjForm-error',
           placeholder: 'Title *',
-          defaultValue: this.props.value.title,
+          defaultValue: "",
           onChange: this.onTitleChange,
         }),
         React.createElement('input', {
           type: 'text',
           className: 'git-field',//errors.giturl && 'ProjForm-error',
           placeholder: 'Git URL *',
-          defaultValue: this.props.value.giturl,
+          defaultValue: "",
           onChange: this.onGiturlChange,
         }),
         React.createElement('textarea', {
           type: 'text',
           className: 'description', //errors.description && 'ProjForm-error',
           placeholder: 'Description *',
-          defaultValue: this.props.value.description,
+          defaultValue: "",
           onChange: this.onDescriptionChange,
         }),
         React.createElement('textarea', {
           type: 'text',
           className: 'dependency', //errors.dependency && 'ProjForm-error',
           placeholder: 'Dependencies * e.g.: node , build-essential',
-          defaultValue: this.props.value.dependency,
+          defaultValue: "",
           onChange: this.onDependencyChange,
         }),
         React.createElement('input', {
           type: 'text',
           className: 'apport', //errors.appport && 'ProjForm-error',
           placeholder: 'App Port *',
-          defaultValue: this.props.value.appport,
+          defaultValue: "",
           onChange: this.onAppportChange,
         }),
         React.createElement('textarea', {
           type: 'text',
           className: 'initcommand', //errors.initcommand && 'ProjForm-error',
           placeholder: 'Init Command *',
-          defaultValue: this.props.value.initcommand,
+          defaultValue: "",
           onChange: this.onInitcommandChange,
         }),
         React.createElement('textarea', {
           type: 'text',
           className: 'runcommand', //errors.runcommand && 'ProjForm-error',
           placeholder: 'Run Command *',
-          defaultValue: this.props.value.runcommand,
+          defaultValue: "",
           onChange: this.onRuncommandChange,
         }),
         React.createElement('button', {
@@ -192,7 +207,7 @@ function setState(changes){
   ReactDOM.render(
     React.createElement(ProjView, Object.assign({}, state,{
       onNewProjChange: updateNewProj,
-      onNewProjSubmit: submitNewProj,
+      onNewProjSubmit: this.onSubmit,
     })),
     document.getElementById('projectContainer')
   );
