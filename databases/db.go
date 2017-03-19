@@ -18,9 +18,10 @@ type Discussion struct {
 type Project struct {
 	Title       string     `json:"title"`
 	Description string     `json:"description"`
-	UserID      string     `json:"userid"`
+	UserName    string     `json:"username"`
 	ProjectID   int        `json:"projectid"`
 	GitURL      string     `json:"giturl"`
+	ProjectName string     `json:"projectname"`
 	TimeStamp   time.Time  `json:"timestamp"`
 	Discussion  Discussion `json:"discussion"`
 	Languages   []string   `json:"languages"`
@@ -30,7 +31,7 @@ type Project struct {
 type Idea struct {
 	Title       string     `json:"title"`
 	Description string     `json:"description"`
-	UserID      string     `json:"userid"`
+	UserName    string     `json:"username"`
 	IdeaID      int        `json:"ideaid"`
 	TimeStamp   time.Time  `json:"timestamp"`
 	Discussion  Discussion `json:"discussion"`
