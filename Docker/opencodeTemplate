@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#docker build -t basic-container .
+docker build -t {0} .
+
+#docker run -p 127.0.0.1:8080:8080 --name basic-container -t basic-container
+
+docker run -p localhost:{1}:{1} --name {0} -t {0}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="webfontkit/stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="css/home.css">
+  <link rel="shortcut icon" href="ImgSrc/favicon.ico" />
+  <script src="https://fb.me/react-15.1.0.js"></script>
+  <script src="https://fb.me/react-dom-15.1.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.js"></script>
+  <meta charset="UTF-8">
+  <title>Open Code</title>
+
+  <style>
+    #container {
+      background-color: #FFF;
+      font-size: 20px;
+      font-family: "aileron-thin";
+      letter-spacing: 6px;
+    }
+  </style>
+
+</head>
+
+  <body>
+    <a href="index.html">
+      <img id="header-logo" src="ImgSrc/logo.png">
+    </a>
+      <hr id="headerLine">
+
+
+      <!-- Project and Idea columns -->
+      <div id="columnSection">
+
+        <!-- Project column-->
+        <div class="columns" id="projectCol">
+          <div class="colHeader">
+            <div class="colTitle">
+                OPEN PROJECTS
+
+                <!-- Modal for creating a project -->
+                  <a href="#createProjectModal">
+                    <img class="colAdd" src="ImgSrc/add.png">
+                  </a>
+                  <div id="createProjectModal" class="modalDialog">
+                    <div>	<a href="#close" title="Close" class="close">X</a>
+
+                      <div class="innerModal" id="projectContainer">
+                          <script type="text/javascript" src="ReactSrc/ProjForm.js"></script>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- List of all projects -->
+              <div class="sections" id="projectSec">
+                <!-- Displayed -->
+                <p>TITLE</p>
+                <p>Description</p>
+                <!-- for Gitprojectname and Gitusername -->
+                <p><img class="colIcons" src="ImgSrc/git.png">  Start!</p>
+                <hr class="partialLine">
+              </div>
+        </div>
+
+
+        <!-- Idea column -->
+        <div class="columns" id="ideasCol">
+          <div class="colHeader">
+            <div class="colTitle">
+                IDEAS
+
+
+                <!-- Modal for creating an idea -->
+                  <a href="#createIdeaModal">
+                    <img class="colAdd" src="ImgSrc/add.png">
+                  </a>
+                  <div id="createIdeaModal" class="modalDialog">
+                    <div>	<a href="#close" title="Close" class="close">X</a>
+
+                      <div class="innerModal" id="ideaContainer">
+                          <script type="text/javascript" src="ReactSrc/ideaForm.js"></script>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- List of all ideas-->
+              <div class="sections" id="ideasSec">
+                <!-- Displayed -->
+                <p>IDEA</p>
+                <p>Description</p>
+                <!-- for Gitprojectname and Gitusername -->
+                <p><img class="colIcons" src="ImgSrc/comment.png">  Comment !</p>
+                <hr class="partialLine">
+              </div>
+            </div>
+
+      </div>
+
+
+
+
+  </body>
+</head>

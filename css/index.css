@@ -1,3 +1,54 @@
 body{
   background-image: url("../ImgSrc/background.png");
 }
+
+h1,h2{
+  color: rgb(255, 255, 255);
+}
+
+h1{
+  font-size: 56px;
+  font-family: "glacial_indifferencebold";
+  letter-spacing: 20px;
+}
+
+h2{
+  font-size: 24px;
+  font-family: "glacial_indifferenceregular";
+  letter-spacing: 13px;
+}
+
+#splash{
+  text-align: center;
+
+}
+
+#opening{
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%,-50%);
+  text-align: center;
+
+}
+
+#intro{
+  padding-top: 40px;
+  color: rgb(255, 255, 255);
+}
+
+#intro-line{
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-family: "aileron-thin";
+  letter-spacing: 10px;
+}
+
+#arrowImg{
+  position: absolute;
+  right: 120px;
+  top: 53%;
+  transform: translateY(-50%);
+  width: 150px;
+  height: auto;
+}

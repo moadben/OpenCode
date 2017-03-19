@@ -41,24 +41,28 @@ var IdeaForm = React.createClass({
       React.createElement('form', {onSubmit: this.onSubmit, className: 'IdeaForm', noValidate: true},
         React.createElement('input', {
           type: 'text',
-          className: errors.title && 'IdeaForm-error',
-          placeholder: 'Title (required)',
+          className: 'idea-title', // errors.title && 'IdeaForm-error',
+          placeholder: 'Title *',
           value: this.props.value.title,
           onChange: this.onTitleChange,
         }),
         React.createElement('input', {
           type: 'text',
-          className: errors.userid && 'IdeaForm-error',
-          placeholder: 'User ID (required)',
+          className: 'idea-userid', //errors.userid && 'IdeaForm-error',
+          placeholder: 'User ID *',
           value: this.props.value.userid,
           onChange: this.onUseridChange,
         }),
         React.createElement('textarea', {
+          className:'idea-description',
           placeholder: 'Description',
           value: this.props.value.description,
           onChange: this.onDescriptionChange,
         }),
-        React.createElement('button', {type: 'submit'}, "Add Idea")
+        React.createElement('button', {
+          type: 'submit',
+          className: 'submit',
+        }, "add")
       )
     );
   },
@@ -98,7 +102,7 @@ var IdeaView = React.createClass({
 
     return (
       React.createElement('div', {className: 'IdeaView'},
-        React.createElement('h1', {className: 'IdeaView-title'}, "Ideas"),
+        React.createElement('h1', {className: 'IdeaView-title'}, "CREATE AN IDEA"),
         React.createElement('ul', {className: 'IdeaView-list'}, ideaItemElements),
         React.createElement(IdeaForm, {
           value: this.props.newIdea,
@@ -165,15 +169,13 @@ function setState(changes) {
       onNewIdeaChange: updateNewIdea,
       onNewIdeaSubmit: submitNewIdea,
     })),
-    document.getElementById('container')
+    document.getElementById('ideaContainer')
   );
 }
 
 // Set initial data
 setState({
   ideas: [
-    {key: 1, title: "forkIt", userid: "James K Nelson",  description: "Front-end Unicorn"},
-    {key: 2, title: "hello world", userid: "Jim"},
   ],
   newIdea: Object.assign({}, IDEA_TEMPLATE),
 });
