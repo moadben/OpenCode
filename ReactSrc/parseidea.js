@@ -22,9 +22,9 @@ var Pidea = React.createClass({
         {
             ideas.map(idea => {
             return (
-            <div key={idea.ideaid}>
-              <p>{idea.title}</p>
-              <p>{idea.description}</p>
+            <div className='idea-cells' key={idea.ideaid}>
+              <p className='idea-title-p'>{idea.title}</p>
+              <p className='idea-des-p'>{idea.description}</p>
               <ul>
                 {
                   idea.discussion.comments.map(comment => <li key={comment.comment}>{comment.comment}</li>)

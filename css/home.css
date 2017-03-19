@@ -50,9 +50,10 @@ h4{
 }
 
 .columns{
-  width: 48%;
+  width: 47%;
   height 550px;
   padding-top: 20px;
+
 }
 
 #projectCol{
@@ -61,6 +62,7 @@ h4{
 
 #ideasCol{
   float:right;
+  margin-right: 20px;
 }
 
 .sections{
@@ -146,17 +148,12 @@ h4{
   margin-right: 20px;
 }
 
-#createProjectModal{
+#createProjectModal, #createIdeaModal, #start{
   font-size: 20px;
   font-family: "aileron-thin";
   letter-spacing: 6px;
 }
 
-#createIdeaModal{
-  font-size: 20px;
-  font-family: "aileron-thin";
-  letter-spacing: 6px;
-}
 
 .title-field, .description, .git-field, .description, .dependency, .initcommand, .runcommand, .apport, .runcommand, .idea-description, .idea-title, .idea-userid{
   color: #000;

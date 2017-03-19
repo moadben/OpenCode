@@ -58,7 +58,7 @@ var IdeaForm = React.createClass({
         React.createElement('button', {
           type: 'submit',
           className: 'submit',
-        }, "add")
+        }, "ADD")
       )
     );
   },

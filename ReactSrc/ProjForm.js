@@ -51,7 +51,7 @@ var ProjForm = React.createClass({
       React.createElement('form', {onSubmit: this.onSubmit, className: 'ProjForm', noValidate: true},
         React.createElement('input', {
           type: 'text',
-          className: 'title-field',//errors.title && 'ProjForm-error',
+          className: 'title-field'&& errors.title && 'ProjForm-error',
           placeholder: 'Title *',
           value: this.props.value.title,
           onChange: this.onTitleChange,
@@ -101,7 +101,7 @@ var ProjForm = React.createClass({
         React.createElement('button', {
           type: 'submit',
           className: 'submit',
-        }, "ADD PROJECT")
+        }, "ADD")
       )
     );
   },
