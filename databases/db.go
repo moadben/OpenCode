@@ -39,6 +39,8 @@ type Idea struct {
 type Database interface {
 	ReturnProjects() (*[]Project, error)
 	ReturnIdeas() (*[]Idea, error)
+	GetProjectByID(id string) (*Project, error)
+	GetIdeaByID(id string) (*Idea, error)
 	InsertProject(proj Project) error
 	InsertIdea(idea Idea) error
 }

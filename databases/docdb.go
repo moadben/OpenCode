@@ -3,9 +3,11 @@ package databases
 import (
 	"crypto/tls"
 	"net"
+	"strconv"
 	"time"
 
 	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 )
 
 // A DocDB Object
@@ -78,4 +80,30 @@ func (d *DocDB) InsertIdea(Idea Idea) error {
 	Coll := d.Session.DB("opencode").C("ideas")
 	err := Coll.Insert(&Idea)
 	return err
+}
+
+// GetProjectByID is...
+func (d *DocDB) GetProjectByID(id string) (*Project, error) {
+	d.Session.Refresh()
+	intID, err := strconv.Atoi(id)
+	if err != nil {
+		return nil, err
+	}
+	Coll := d.Session.DB("opencode").C("projects")
+	var result Project
+	err = Coll.Find(bson.M{"projectid": intID}).One(&result)
+	return &result, err
+}
+
+// GetIdeaByID is...
+func (d *DocDB) GetIdeaByID(id string) (*Idea, error) {
+	d.Session.Refresh()
+	intID, err := strconv.Atoi(id)
+	if err != nil {
+		return nil, err
+	}
+	Coll := d.Session.DB("opencode").C("ideas")
+	var result Idea
+	err = Coll.Find(bson.M{"ideaid": intID}).One(&result)
+	return &result, err
 }
