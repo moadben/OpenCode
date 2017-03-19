@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 var Project = React.createClass({
+=======
+var Pproject = React.createClass({
+>>>>>>> origin/master
   getInitialState: function() {
     return {
       projects: [],
@@ -25,8 +29,11 @@ var Project = React.createClass({
             <div key={project.title}>
               <p>{project.title}</p>
               <p>{project.description}</p>
+<<<<<<< HEAD
               <p>{project.gitprojectname}</p>
               <p>{project.username}</p>
+=======
+>>>>>>> origin/master
               <ul>
                 {
                   project.discussion.map(comment => <li key={comment.comment}>{comment.comment}</li>)
@@ -43,4 +50,8 @@ var Project = React.createClass({
 });
 
 
+<<<<<<< HEAD
 ReactDOM.render(<Project/>, document.getElementById('ooo'));
+=======
+ReactDOM.render(<Pproject/>, document.getElementById('ooo'));
+>>>>>>> origin/master

@@ -1,4 +1,4 @@
-var Main = React.createClass({
+var Pidea = React.createClass({
   getInitialState: function() {
     return {
       ideas: [],
@@ -67,4 +67,4 @@ var Main = React.createClass({
 // });
 
 
-ReactDOM.render(<Main/>, document.getElementById('blah'));
+ReactDOM.render(<Pidea/>, document.getElementById('blah'));
