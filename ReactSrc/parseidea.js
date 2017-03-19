@@ -1,4 +1,4 @@
-var Main = React.createClass({
+var Pidea = React.createClass({
   getInitialState: function() {
     return {
       ideas: [],
@@ -40,31 +40,5 @@ var Main = React.createClass({
   }
 });
 
-// var IdeaList = React.createClass({
-//   render: function() {
-//     var {ideas} = this.props;
-//     var renderIdeas = () => {
-//       return ideas.map(idea => {
-//         return (
-//           <Idea key={idea.title} name={idea.description} value={}
-//         );
-//       }
-//     }
-//   }
-// });
 
-// var CommentList = React.createClass({
-//   render: function() {
-//     var {comments} = this.props;
-//     var renderComments = () => {
-//       return ideas.map(idea => {
-//         return (
-//           <Idea key={idea.title} name={idea.description} value={}
-//         );
-//       }
-//     }
-//   }
-// });
-
-
-ReactDOM.render(<Main/>, document.getElementById('blah'));
+ReactDOM.render(<Pidea/>, document.getElementById('blah'));
