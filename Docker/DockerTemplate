@@ -1,0 +1,16 @@
+FROM alpine:3.3
+
+RUN apk update && apk upgrade && && mkdir /home/app && apk add git bash {0} 
+
+#nodejs && mkdir /home/app && git clone https://github.com/soxies1/TestNodeApp /home/app
+
+WORKDIR /home/app
+COPY . /home/app
+{1}
+#RUN npm install
+#RUN npm init -f && npm install express --save
+#COPY . /home/app
+EXPOSE {2}
+#EXPOSE 8080
+CMD {3}
+
