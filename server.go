@@ -85,7 +85,7 @@ func GetIdea(c *gin.Context) {
 	c.JSON(http.StatusOK, idea)
 }
 
-// AddIdeaComment is...
+// AddIdeaComment is adds a comment to a pre-existing idea object in the database
 func AddIdeaComment(c *gin.Context) {
 	id := c.Param("id")
 	idea, err := db.GetIdeaByID(id)
@@ -108,7 +108,7 @@ func AddIdeaComment(c *gin.Context) {
 	}
 }
 
-// AddProjectComment is...
+// AddProjectComment adds a comment to a pre-existing project object in the database
 func AddProjectComment(c *gin.Context) {
 	id := c.Param("id")
 	project, err := db.GetProjectByID(id)
@@ -131,7 +131,7 @@ func AddProjectComment(c *gin.Context) {
 	}
 }
 
-// Index is...
+// Index renders the base index html file.
 func Index(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.html", gin.H{
 		"title": "Index Page",

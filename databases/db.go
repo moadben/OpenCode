@@ -2,14 +2,14 @@ package databases
 
 import "time"
 
-// Comment is...
+// Comment holds the userid, comment and timestamp related to comments
 type Comment struct {
 	UserID    string    `json:"userid"`
 	Comment   string    `json:"comment"`
 	TimeStamp time.Time `json:"timestamp"`
 }
 
-// Discussion is...
+// Discussion holds multiple comments based on timestamp
 type Discussion struct {
 	Comments []Comment `json:"comments"`
 }

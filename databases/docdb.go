@@ -60,7 +60,7 @@ func NewDocDB(conn string) (DocDB, error) {
 	return db, nil
 }
 
-// ReturnProjects is...
+// ReturnProjects returns all projects in the database
 func (d *DocDB) ReturnProjects() (*[]Project, error) {
 	d.Session.Refresh()
 	Coll := d.Session.DB("opencode").C("projects")
@@ -69,7 +69,7 @@ func (d *DocDB) ReturnProjects() (*[]Project, error) {
 	return &result, err
 }
 
-// ReturnIdeas is...
+// ReturnIdeas returns all ideas in the database
 func (d *DocDB) ReturnIdeas() (*[]Idea, error) {
 	d.Session.Refresh()
 	Coll := d.Session.DB("opencode").C("ideas")
@@ -78,7 +78,7 @@ func (d *DocDB) ReturnIdeas() (*[]Idea, error) {
 	return &result, err
 }
 
-// InsertProject is...
+// InsertProject inserts a project into the database
 func (d *DocDB) InsertProject(Proj Project) error {
 	d.Session.Refresh()
 	Proj.ProjectID = d.ProjectCounter
@@ -89,7 +89,7 @@ func (d *DocDB) InsertProject(Proj Project) error {
 	return err
 }
 
-// InsertIdea is...
+// InsertIdea is inserts an idea into the database
 func (d *DocDB) InsertIdea(Idea Idea) error {
 	d.Session.Refresh()
 	Idea.IdeaID = d.IdeaCounter
@@ -99,7 +99,7 @@ func (d *DocDB) InsertIdea(Idea Idea) error {
 	return err
 }
 
-// GetProjectByID is...
+// GetProjectByID grabs one object through a unique project id
 func (d *DocDB) GetProjectByID(id string) (*Project, error) {
 	d.Session.Refresh()
 	intID, err := strconv.Atoi(id)
@@ -112,7 +112,7 @@ func (d *DocDB) GetProjectByID(id string) (*Project, error) {
 	return &result, err
 }
 
-// GetIdeaByID is...
+// GetIdeaByID grabs one object through a unique idea id
 func (d *DocDB) GetIdeaByID(id string) (*Idea, error) {
 	d.Session.Refresh()
 	intID, err := strconv.Atoi(id)
@@ -125,7 +125,7 @@ func (d *DocDB) GetIdeaByID(id string) (*Idea, error) {
 	return &result, err
 }
 
-// UpdateProjectEntry is ...
+// UpdateProjectEntry updates the comments for a project entry
 func (d *DocDB) UpdateProjectEntry(project *Project) error {
 	d.Session.Refresh()
 	Coll := d.Session.DB("opencode").C("projects")
@@ -137,7 +137,7 @@ func (d *DocDB) UpdateProjectEntry(project *Project) error {
 	return err
 }
 
-// UpdateIdeaEntry is ...
+// UpdateIdeaEntry updates the comments for a idea entry
 func (d *DocDB) UpdateIdeaEntry(idea *Idea) error {
 	d.Session.Refresh()
 	Coll := d.Session.DB("opencode").C("ideas")
