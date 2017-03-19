@@ -25,6 +25,9 @@ type Project struct {
 	TimeStamp   time.Time  `json:"timestamp"`
 	Discussion  Discussion `json:"discussion"`
 	Languages   []string   `json:"languages"`
+	AppPort     string     `json:"appport"`
+	InitCommand string     `json:"initcommand"`
+	RunCommand  string     `json:"runcommand"`
 }
 
 // Idea stores Idea objects
