@@ -14,8 +14,8 @@ var IdeaForm = React.createClass({
     this.props.onChange(Object.assign({}, this.props.value, {title: e.target.value}));
   },
 
-  onOwnerChange: function(e) {
-    this.props.onChange(Object.assign({}, this.props.value, {owner: e.target.value}));
+  onUseridChange: function(e) {
+    this.props.onChange(Object.assign({}, this.props.value, {userid: e.target.value}));
   },
 
 
@@ -44,10 +44,10 @@ var IdeaForm = React.createClass({
         }),
         React.createElement('input', {
           type: 'text',
-          className: errors.owner && 'IdeaForm-error',
-          placeholder: 'Owner (required)',
-          value: this.props.value.owner,
-          onChange: this.onOwnerChange,
+          className: errors.userid && 'IdeaForm-error',
+          placeholder: 'User ID (required)',
+          value: this.props.value.userid,
+          onChange: this.onUseridChange,
         }),
         React.createElement('textarea', {
           placeholder: 'Description',
@@ -64,7 +64,7 @@ var IdeaForm = React.createClass({
 var IdeaItem = React.createClass({
   propTypes: {
     title: React.PropTypes.string.isRequired,
-    owner: React.PropTypes.string.isRequired,
+    userid: React.PropTypes.string.isRequired,
     description: React.PropTypes.string,
   },
 
@@ -72,7 +72,7 @@ var IdeaItem = React.createClass({
     return (
       React.createElement('li', {className: 'IdeaItem'},
         React.createElement('h2', {className: 'IdeaItem-title'}, this.props.title),
-        React.createElement('h2', {className: 'IdeaItem-owner'}, this.props.owner),
+        React.createElement('h2', {className: 'IdeaItem-userid'}, this.props.userid),
         React.createElement('div', {className: 'IdeaItem-description'}, this.props.description)
       )
     );
@@ -112,7 +112,7 @@ var IdeaView = React.createClass({
  */
 
 
-var IDEA_TEMPLATE = {title: "", owner: "", description: "", errors: null};
+var IDEA_TEMPLATE = {title: "", userid: "", description: "", errors: null};
 
 
 
@@ -129,8 +129,8 @@ function updateNewIdea(idea) {
 function submitNewIdea() {
   var idea = Object.assign({}, state.newIdea, {key: state.ideas.length + 1, errors: {}});
 
-  if (!idea.owner) {
-    idea.errors.owner = ["Please enter your new idea's owner"];
+  if (!idea.userid) {
+    idea.errors.userid = ["Please enter your new idea's owner"];
   }
 
   setState(
@@ -168,8 +168,8 @@ function setState(changes) {
 // Set initial data
 setState({
   ideas: [
-    {key: 1, title: "forkIt", owner: "James K Nelson",  description: "Front-end Unicorn"},
-    {key: 2, title: "hello world", owner: "Jim"},
+    {key: 1, title: "forkIt", userid: "James K Nelson",  description: "Front-end Unicorn"},
+    {key: 2, title: "hello world", userid: "Jim"},
   ],
   newIdea: Object.assign({}, IDEA_TEMPLATE),
 });

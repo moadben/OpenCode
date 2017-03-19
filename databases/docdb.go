@@ -2,9 +2,11 @@ package databases
 
 import (
 	"crypto/tls"
+	"errors"
 	"fmt"
 	"net"
 	"strconv"
+	"strings"
 	"time"
 
 	"gopkg.in/mgo.v2"
@@ -81,9 +83,19 @@ func (d *DocDB) ReturnIdeas() (*[]Idea, error) {
 // InsertProject inserts a project into the database
 func (d *DocDB) InsertProject(Proj Project) error {
 	d.Session.Refresh()
+	// creating unique ID
 	Proj.ProjectID = d.ProjectCounter
 	d.ProjectCounter++
+	// creating timestamp
 	Proj.TimeStamp = time.Now()
+	// manipulating url
+	url := strings.Split(Proj.GitURL, "/")
+	if len(url) > 2 {
+		Proj.ProjectName = url[len(url)-1]
+		Proj.UserName = url[len(url)-2]
+	} else {
+		return errors.New("Invalid Git URL provided")
+	}
 	Coll := d.Session.DB("opencode").C("projects")
 	err := Coll.Insert(&Proj)
 	return err
