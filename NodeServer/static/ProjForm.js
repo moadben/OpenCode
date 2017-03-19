@@ -5,6 +5,11 @@ var ProjForm = React.createClass({
     onSubmit: React.PropTypes.func.isRequired,
   },
 
+  /* These functions are to make the fields to REACT to changes from user input */
+  onDifficultyChange: function(e) {
+    this.props.onChange(Object.assign({}, this.props.value, {difficulty: e.target.value}));
+  },
+
   onTitleChange: function(e) {
     this.props.onChange(Object.assign({}, this.props.value, {title: e.target.value}));
   },
@@ -32,74 +37,84 @@ var ProjForm = React.createClass({
     this.props.onChange(Object.assign({}, this.props.value, {runcommand: e.target.value}));
   },
 
+  /* Submit function: parse the form object to JSON format */
   onSubmit: function(e) {
     e.preventDefault();
     this.props.onSubmit();
     var json_data = JSON.stringify(this.props.value);
     console.log(json_data);
+    fetch('http://opencode.me:8080/add_project', {
+      method: 'POST',
+      body: json_data,
+    });
   },
 
-
+  /* Form render function (does not actually render here) */
   render: function(){
     var errors = this.props.value.errors || {};
-
     return(
+
+
       React.createElement('form', {onSubmit: this.onSubmit, className: 'ProjForm', noValidate: true},
         React.createElement('input', {
           type: 'text',
-          className: errors.title && 'ProjForm-error',
-          placeholder: 'Title (required)',
-          value: this.props.value.title,
+          className: 'title-field', //&& errors.title && 'ProjForm-error',
+          placeholder: 'Title *',
+          defaultValue: this.props.value.title,
           onChange: this.onTitleChange,
         }),
         React.createElement('input', {
           type: 'text',
-          className: errors.giturl && 'ProjForm-error',
-          placeholder: 'Git URL (required)',
-          value: this.props.value.giturl,
+          className: 'git-field',//errors.giturl && 'ProjForm-error',
+          placeholder: 'Git URL *',
+          defaultValue: this.props.value.giturl,
           onChange: this.onGiturlChange,
         }),
         React.createElement('textarea', {
           type: 'text',
-          className: errors.description && 'ProjForm-error',
-          placeholder: 'Description (required)',
-          value: this.props.value.description,
+          className: 'description', //errors.description && 'ProjForm-error',
+          placeholder: 'Description *',
+          defaultValue: this.props.value.description,
           onChange: this.onDescriptionChange,
         }),
-        React.createElement('input', {
+        React.createElement('textarea', {
           type: 'text',
-          className: errors.dependency && 'ProjForm-error',
-          placeholder: 'Dependencies (required)',
-          value: this.props.value.dependency,
+          className: 'dependency', //errors.dependency && 'ProjForm-error',
+          placeholder: 'Dependencies * e.g.: node , build-essential',
+          defaultValue: this.props.value.dependency,
           onChange: this.onDependencyChange,
         }),
         React.createElement('input', {
           type: 'text',
-          className: errors.appport && 'ProjForm-error',
-          placeholder: 'App Port (required)',
-          value: this.props.value.appport,
+          className: 'apport', //errors.appport && 'ProjForm-error',
+          placeholder: 'App Port *',
+          defaultValue: this.props.value.appport,
           onChange: this.onAppportChange,
         }),
         React.createElement('textarea', {
           type: 'text',
-          className: errors.initcommand && 'ProjForm-error',
-          placeholder: 'Init Command (required)',
-          value: this.props.value.initcommand,
+          className: 'initcommand', //errors.initcommand && 'ProjForm-error',
+          placeholder: 'Init Command *',
+          defaultValue: this.props.value.initcommand,
           onChange: this.onInitcommandChange,
         }),
         React.createElement('textarea', {
           type: 'text',
-          className: errors.runcommand && 'ProjForm-error',
-          placeholder: 'Run Command (required)',
-          value: this.props.value.runcommand,
+          className: 'runcommand', //errors.runcommand && 'ProjForm-error',
+          placeholder: 'Run Command *',
+          defaultValue: this.props.value.runcommand,
           onChange: this.onRuncommandChange,
         }),
-        React.createElement('button', {type: 'submit'}, "Add Project")
+        React.createElement('button', {
+          type: 'submit',
+          className: 'submit',
+        }, "ADD")
       )
     );
   },
 });
 
+/* Output function call: useless */
 var ProjItem = React.createClass({
   propTypes: {
     title: React.PropTypes.string.isRequired,
@@ -109,7 +124,8 @@ var ProjItem = React.createClass({
 
   render: function() {
     return (
-      React.createElement('li', {className: 'ProjItem'},
+        React.createElement('li', {className: 'ProjItem'},
+        React.createElement('h1', {className: 'Proj-title'}, "CREATE AN IDEA"),
         React.createElement('h2', {className: 'ProjItem-title'}, this.props.title),
         React.createElement('h2', {className: 'ProjItem-giturlname'}, this.props.giturl),
         React.createElement('div', {className: 'ProjItem-description'}, this.props.description)
@@ -133,14 +149,17 @@ var ProjView = React.createClass({
       .map(function(proj) { return React.createElement(ProjItem, proj); });
 
     return (
+      React.createElement('div', {className: 'ProjView'},
+        React.createElement('h1', {className: 'ProjView-title'}, "CREATE AN PROJECT"),
         React.createElement(ProjForm, {
           value: this.props.newProj,
           onChange: this.props.onNewProjChange,
           onSubmit: this.props.onNewProjSubmit,
         })
-      );
-    }
-  });
+      )
+    );
+  },
+});
 
 
 
@@ -175,7 +194,7 @@ function setState(changes){
       onNewProjChange: updateNewProj,
       onNewProjSubmit: submitNewProj,
     })),
-    document.getElementById('container')
+    document.getElementById('projectContainer')
   );
 }
 

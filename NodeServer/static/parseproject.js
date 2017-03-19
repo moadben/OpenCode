@@ -6,7 +6,7 @@ var Pproject = React.createClass({
   },
 
   componentDidMount: async function() {
-    const request = await fetch('/projectdata.json');
+    const request = await fetch('http://opencode.me:8080/projects');
     const projects = await request.json();
     this.setState({ projects });
   },
@@ -22,7 +22,7 @@ var Pproject = React.createClass({
         {
             projects.map(project => {
             return (
-            <div key={project.title}>
+            <div key={project.projectid}>
               <p>{project.title}</p>
               <p>{project.description}</p>
               <ul>
