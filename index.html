@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" type="text/css" href="css/index.css">
-  <script src="https://fb.me/react-15.1.0.js"></script>
-  <script src="https://fb.me/react-dom-15.1.0.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.js"></script>
+    <script src="https://fb.me/react-15.1.0.js"></script>
+    <script src="https://fb.me/react-dom-15.1.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     <meta charset="UTF-8">
     <title>Open Code</title>
 </head>
 <body>
+    <div id="blah"></div>
+    <script type="text/babel" src="ReactSrc/parseidea.js"></script>
+
+    <div id="ooo"></div>
+    <script type="text/babel" src="ReactSrc/parseproject.js"></script>
+
     <div id="container"></div>
     <script type="text/babel" src="ReactSrc/ProjForm.js"></script>
+    <script type="text/babel" src="ReactSrc/ideaForm.js"></script>
 </body>
 </html>

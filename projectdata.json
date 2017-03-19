@@ -1,0 +1,20 @@
+[
+  {
+  	"title": "Title of project",
+  	"description": "Description of project",
+  	"gitprojectname": "gitprojectname",
+  	"gitusername": "gitusername",
+  	"dependencies": ["nodejs", "apache2"],
+  	"appport" : "8080",
+  	"initcommand": "npm install",
+  	"runcommand" : "npm start",
+    "timestamp" : "2017-12-12",
+  	"discussion": [
+  		{
+  			"username": "testuser",
+  			"comment" : "comment",
+  			"timestamp" : "2017-12-12"
+  		}
+  	]
+  }
+]
