@@ -1,4 +1,4 @@
-{
+[{
 	"title": "Title of Idea",
 	"description": "Description of Idea",
 	"timestamp" : "2017-12-12",
@@ -6,7 +6,12 @@
 		{
 			"username": "testuser",
 			"comment" : "comment",
-			“timestamp” : "2017-12-12"
+			"timestamp" : "2017-12-12"
+		},
+		{
+			"username": "user1",
+			"comment" : "comment 2",
+			"timestamp" : "2017-12-12"
 		}
-	],
-}
+	]
+}]

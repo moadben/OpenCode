@@ -1,35 +1,41 @@
 var Main = React.createClass({
   getInitialState: function() {
     return {
-      sensors: [],
+      ideas: [],
     };
   },
 
-  componentDidMount: function() {
-    var _this = this;
-    this.serverRequest =
-      axios
-        .get("http://localhost:3000/testdata.json")
-        .then(function(result) {
-          _this.setState({
-            sensors: result.data
-          });
-        }) // chain api calls to obtain ALL data needed
+  componentDidMount: async function() {
+    const request = await fetch('/testdata.json');
+    const ideas = await request.json();
+    this.setState({ ideas });
   },
 
   componentWillUnmount: function() {
-    this.serverRequest.abort();
+    // this.serverRequest.abort();
   },
 
   render: function() {
-    var {sensors} = this.state;
-
+    var {ideas} = this.state;
     return (
-      <h1>Ideas!</h1>
-      {this.state.sensors.map(function)}
-        <div>
-            {sensors}
-        </div>
+      <div>
+        {
+            ideas.map(idea => {
+            return (
+            <div key={idea.title}>
+              <p>{idea.title}</p>
+              <p>{idea.description}</p>
+              <ul>
+                {
+                  idea.discussion.map(comment => <li key={comment.comment}>{comment.comment}</li>)
+                }
+              </ul>
+              <hr></hr>
+            </div>
+            )
+          })
+        }
+      </div>
     );
   }
 });
