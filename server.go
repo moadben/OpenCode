@@ -147,8 +147,6 @@ func main() {
 
 	//Running of server
 	r := gin.Default()
-	//setting html folder in templates
-	r.LoadHTMLGlob("templates/*")
 
 	// GET
 	r.GET("/projects", Projects)
@@ -159,8 +157,9 @@ func main() {
 
 	// POST
 	r.POST("/add_project", AddProject)
-	r.POST("/projects/:id/add_comment", AddProjectComment)
 	r.POST("/add_idea", AddIdea)
+
+	r.POST("/projects/:id/add_comment", AddProjectComment)
 	r.POST("/ideas/:id/add_comment", AddIdeaComment)
 	r.Run()
 }
