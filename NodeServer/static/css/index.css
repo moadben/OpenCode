@@ -52,3 +52,16 @@ h2{
   width: 150px;
   height: auto;
 }
+
+button.signinButton{
+  margin-top: 30px;
+  text-align: center;
+  font-size: 13px;
+  font-family: "aileron-thin";
+  letter-spacing: 2px;
+  width: 150px;
+  height: 25px;
+  background-color: rgba(68,217,230,0.8);
+  color: rgba(255,255,255,1);
+  border: none;
+}
