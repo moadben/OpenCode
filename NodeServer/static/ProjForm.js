@@ -30,7 +30,7 @@ var ProjForm = React.createClass({
   },
 
   onDependencyChange: function(e) {
-    this.props.value.dependency = e.target.value;
+    this.props.value.dependency = e.target.value.split(" ");
     //this.props.onChange(Object.assign({}, this.props.value, {dependency: e.target.value}));
   },
 
