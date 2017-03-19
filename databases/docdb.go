@@ -106,6 +106,7 @@ func (d *DocDB) InsertIdea(Idea Idea) error {
 	d.Session.Refresh()
 	Idea.IdeaID = d.IdeaCounter
 	d.IdeaCounter++
+	Idea.TimeStamp = time.Now()
 	Coll := d.Session.DB("opencode").C("ideas")
 	err := Coll.Insert(&Idea)
 	return err
