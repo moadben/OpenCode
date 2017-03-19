@@ -27,7 +27,7 @@ var Pproject = React.createClass({
               <p>{project.description}</p>
               <ul>
                 {
-                  project.discussion.map(comment => <li key={comment.comment}>{comment.comment}</li>)
+                  project.discussion.comments.map(comment => <li key={comment.comment}>{comment.comment}</li>)
                 }
               </ul>
               <hr></hr>
@@ -39,6 +39,5 @@ var Pproject = React.createClass({
     );
   }
 });
-
 
 ReactDOM.render(<Pproject/>, document.getElementById('ooo'));

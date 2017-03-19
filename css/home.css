@@ -1,0 +1,88 @@
+body {
+  background-color: rgba(0, 0, 0, 0.84);
+}
+
+#header-logo{
+  width: 150px;
+  height: auto;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+hr{
+  border-color: rgb(68,217,230);
+}
+
+p {
+  font-size: 15px
+}
+
+#headerLine{
+  width: 88%;
+}
+
+#midLine{
+  width: 1px;
+  height: 570px;
+}
+
+.partialLine{
+  width:90%;
+  opacity: 0.6;
+}
+
+.colTitle{
+  font-size: 20px;
+  font-family: "aileron-thin";
+  letter-spacing: 6px;
+  color: rgb(255, 255, 255);
+  padding-bottom: 20px;
+  padding-left: 18px;
+
+}
+
+#columnSection{
+  padding-top: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.columns{
+  width: 48%;
+  height 550px;
+  padding-top: 20px;
+}
+
+#projectCol{
+  float:left;
+}
+
+#ideasCol{
+  float:right;
+}
+
+.sections{
+  background-color: rgba(77,121,126, 0.15);
+  height: 540px;
+  padding: 20px;
+  font-family: "aileron-thin";
+  color: rgba(255, 255, 255, 0.6);
+  overflow-y: scroll;
+}
+
+#projectSec{
+}
+
+#ideasSec{
+
+}
+.colAdd{
+  float:right;
+  width: 25px;
+  height: auto;
+}
+
+.colIcons{
+  width: 25px;
+  height: auto;
+}

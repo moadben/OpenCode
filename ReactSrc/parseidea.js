@@ -27,7 +27,7 @@ var Pidea = React.createClass({
               <p>{idea.description}</p>
               <ul>
                 {
-                  idea.discussion.map(comment => <li key={comment.comment}>{comment.comment}</li>)
+                  idea.discussion.comments.map(comment => <li key={comment.comment}>{comment.comment}</li>)
                 }
               </ul>
               <hr></hr>
