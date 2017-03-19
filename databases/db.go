@@ -4,7 +4,7 @@ import "time"
 
 // Comment is...
 type Comment struct {
-	ID        string
+	UserID    string
 	Comment   string
 	TimeStamp time.Time
 }
@@ -16,20 +16,23 @@ type Discussion struct {
 
 //Project stores Project objects
 type Project struct {
-	Title       string
-	Description string
-	ID          string
-	TimeStamp   time.Time
-	Languages   []string
+	Title       string    `json:"title"`
+	Description string    `json:"description"`
+	UserID      string    `json:"userid"`
+	ProjectID   int       `json:"projectid"`
+	GitURL      string    `json:"giturl"`
+	TimeStamp   time.Time `json:"timestamp"`
+	Languages   []string  `json:"languages"`
 }
 
 // Idea stores Idea objects
 type Idea struct {
-	Title       string
-	Description string
-	ID          string
-	TimeStamp   time.Time
-	Discussion  Discussion
+	Title       string     `json:"title"`
+	Description string     `json:"description"`
+	UserID      string     `json:"userid"`
+	IdeaID      int        `json:"ideaid"`
+	TimeStamp   time.Time  `json:"timestamp"`
+	Discussion  Discussion `json:"discussion"`
 }
 
 // Database is the interface all databases must comply with

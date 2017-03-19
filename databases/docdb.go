@@ -2,15 +2,17 @@ package databases
 
 import (
 	"crypto/tls"
-	"fmt"
 	"net"
+	"time"
 
 	"gopkg.in/mgo.v2"
 )
 
 // A DocDB Object
 type DocDB struct {
-	Session *mgo.Session
+	Session        *mgo.Session
+	IdeaCounter    int
+	ProjectCounter int
 }
 
 // NewDocDB creates and returns a new DocumentDB connection
@@ -36,7 +38,7 @@ func NewDocDB(conn string) (DocDB, error) {
 		return DocDB{}, err
 	}
 
-	return DocDB{session}, nil
+	return DocDB{session, 0, 0}, nil
 }
 
 // ReturnProjects is...
@@ -60,7 +62,9 @@ func (d *DocDB) ReturnIdeas() (*[]Idea, error) {
 // InsertProject is...
 func (d *DocDB) InsertProject(Proj Project) error {
 	d.Session.Refresh()
-	fmt.Println(Proj)
+	Proj.ProjectID = d.ProjectCounter
+	d.ProjectCounter++
+	Proj.TimeStamp = time.Now()
 	Coll := d.Session.DB("opencode").C("projects")
 	err := Coll.Insert(&Proj)
 	return err
@@ -69,6 +73,8 @@ func (d *DocDB) InsertProject(Proj Project) error {
 // InsertIdea is...
 func (d *DocDB) InsertIdea(Idea Idea) error {
 	d.Session.Refresh()
+	Idea.IdeaID = d.IdeaCounter
+	d.IdeaCounter++
 	Coll := d.Session.DB("opencode").C("ideas")
 	err := Coll.Insert(&Idea)
 	return err
