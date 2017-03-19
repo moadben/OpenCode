@@ -18,58 +18,88 @@ var Pproject = React.createClass({
 
   render: function() {
     var {projects} = this.state;
+    console.log({projects});
     return (
       <div>
         {
             projects.map(project => {
+
+              project.onDockerClick = function (){generateDockerFile(project)}
+              project.onSuperClick = function (){generateSuperScriptFile(project)}
+              project.onRunScriptClick = function(){generateRunScriptFile(project)}
             return (
             <div key={project.projectid}>
               <p>{project.title}</p>
               <p>{project.description}</p>
               <ul>
               <div>
-              <a href="#start">
+              <a href={'#start' + project.title}>
                 <p><img className="colIcons" src="img/git.png"/> Start!</p>
               </a>
 
 
 
-            <div id="start" className="modalDialog">
+
+            <div id={'start' + project.title} className="modalDialog">
               <div> <a href="#close" title="Close" className="close">X</a>
 
-                <div className="innerModal" id="start">
+                <div className="innerModal" id={'start' + project.title}>
                   <h1>Steps to environment set up</h1>
                   <br/>
                   <h3>1. Fork the Repo of the selected project</h3>
-                  <a className="github-button" href="{project.giturl}/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="{project.userid}/{project.title}/network" data-count-api="/repos/{project.userid}/{project.title}#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork {project.userid}/{project.title} on GitHub">Fork</a>
+                  <script async defer src="https://buttons.github.io/buttons.js"></script>
+                  <a className="github-button" href={project.giturl +'/fork'} data-icon="octicon-repo-forked" data-style="mega" data-count-href={project.userid + '/' + project.title + '/network'} data-count-api={'/repos/'+project.userid+'/'+project.title+'#forks_count'} data-count-aria-label="# forks on GitHub" aria-label={'Fork' +project.userid+'/'+project.title+' on GitHub'}>Fork</a>
                   <br/>
 
-                  <ul >
-                  <script src="js/fileGeneration.js"></script>
-                    <li>
-                      X. Open a terminal
-                    </li>
-                    <li>
-                      X. Create a project folder
-                      <span>mkdir OpenCodeProjects; cd OpenCodeProjects</span>
-                    </li>
-                    <li>
-                      X. Clone the newly forked repo
-                     <span>git clone {project.giturl}; cd {project.title}</span>
-                    </li>
-                  </ul>
-                  <br/>
-                  <h3>3. Download generated Dockerfile</h3>
-                  <button className="docButton" onclick="generateDockerFile(TestNodeApp);">Download Dockerfile</button>
-                  <br/>
-                  <br/>
-                  <h3>4. Download Generated Run Scripts</h3>
-                  <button className="docButton" onclick="generateRunScriptFile(TestNodeApp);">Download Run Scripts</button>
-                  <br/>
-                  <br/>
-                  <h3>5. Or Download Generated Super Script</h3>
-                  <button className="docButton" onclick="generateSuperScriptFile(TestNodeApp);">Download Super Script</button>
-                </div>
+                  <ul>
+                      <script src="js/fileGeneration.js"></script>
+                        <li>
+                          a. Open a terminal
+                        </li>
+                        <li>
+                          b. Create a project folder<br/>
+                          <code>mkdir ~/OpenCodeProjects; cd ~/OpenCodeProjects</code>
+                        </li>
+                        <li>
+                          c. Clone the newly forked repo<br/>
+                         <code>git clone {project.giturl}; cd {project.title}</code>
+                        </li>
+                        <li>
+                          d. Preform either both steps 2 and 3, or just step 4<br/>
+                        </li>
+                      </ul>
+                      <br/>
+                    <h3>2. Download generated Dockerfile</h3>
+                      <button className="docButton" onClick={project.onDockerClick}>Download Dockerfile</button>
+                      <br/>
+                      <br/>
+                      <h3>3. Download Generated Run Scripts</h3>
+                      <button className="docButton" onClick={project.onRunScriptClick}>Download Run Scripts</button>
+                      <br/>
+
+                      <ul>
+                        <li>
+                          a. Run the Downloaded Run Script<br/>
+                          <code>chmod x+ opencode.sh; ./opencode.sh</code>
+                        </li>
+                        <li>
+                          b. The environment should be up and running
+                        </li>
+                      </ul>
+                      <br/>
+                      <h3>4. Or Download Generated Super Script</h3>
+                      <button className="docButton" onClick={project.onSuperClick}>Download Super Script</button>
+                      <ul>
+                        <li>
+                          a. Run the Downloaded Run Script<br/>
+                          <code>chmod x+ superScript.sh; ./superScript.sh</code>
+                        </li>
+                        <li>
+                          b. The environment should be up and running
+                        </li>
+                      </ul>
+                  
+                  </div>
                 </div>
               </div>
             </div>

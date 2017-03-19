@@ -23,6 +23,7 @@ function download(filename, text) {
 }
 
 function generateSuperScriptFile(project){
+	console.log(project)
 	var filename = "superScript.sh";
 	var contents = generateSuperScriptFileContents(project);
 	download(filename, contents);
@@ -30,9 +31,9 @@ function generateSuperScriptFile(project){
 
 function generateSuperScriptFileContents(project){
 
-	var gitusername = project["gitusername"];
-	var gitprojectname = project["gitprojectname"];
-	var dependencies = project["dependencies"].join(" ");
+	var gitusername = project["username"];
+	var gitprojectname = project["projectname"];
+	var dependencies = project["languages"].join(" ");
 	var appport = project["appport"];
 	var runcommand = project["runcommand"];
 	var initcommand = project["initcommand"];
@@ -63,8 +64,8 @@ function generateDockerFile(project){
 
 function generateDockerFileContent(project){
 	var gitusername = project["username"];
-	var gitprojectname = project["title"];
-	var dependencies = project["dependencies"].join(" ");
+	var gitprojectname = project["projectname"];
+	var dependencies = project["languages"].join(" ");
 	var appport = project["appport"];
 	var runcommand = project["runcommand"];
 	var initcommand = project["initcommand"];
@@ -99,8 +100,8 @@ function generateRunScriptFile(project){
 
 function generateRunScriptFileContents(project){
 	var gitusername = project["username"];
-	var gitprojectname = project["title"];
-	var dependencies = project["dependencies"].join(" ");
+	var gitprojectname = project["projectname"];
+	var dependencies = project["languages"].join(" ");
 	var appport = project["appport"];
 	var runcommand = project["runcommand"];
 	var initcommand = project["initcommand"];
