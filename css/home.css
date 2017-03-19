@@ -13,10 +13,6 @@ hr{
   border-color: rgb(68,217,230);
 }
 
-p, h3, h4, h5 {
-  font-family: "aileron-thin";
-  color: rgba(255, 255, 255, 0.6);
-}
 
 h3, h4, h5 {
   font-size: 20px;
@@ -33,6 +29,11 @@ p {
 #midLine{
   width: 1px;
   height: 570px;
+}
+
+.partialLine{
+  width:90%;
+  opacity: 0.6;
 }
 
 #colTitle{
@@ -64,8 +65,11 @@ p {
 
 .sections{
   background-color: rgba(77,121,126, 0.15);
-  height: 550px;
+  height: 540px;
   padding: 20px;
+  font-family: "aileron-thin";
+  color: rgba(255, 255, 255, 0.6);
+  overflow-y: scroll;
 }
 
 #projectSec{
@@ -75,7 +79,7 @@ p {
 
 }
 
-#gitImg{
+.colIcons{
   width: 25px;
   height: auto;
 }
