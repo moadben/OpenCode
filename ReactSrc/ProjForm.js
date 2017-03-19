@@ -1,10 +1,13 @@
-//import 'css/ProjForm.scss'
-
 var ProjForm = React.createClass({
   propTypes: {
     value: React.PropTypes.object.isRequired,
     onChange: React.PropTypes.func.isRequired,
     onSubmit: React.PropTypes.func.isRequired,
+  },
+
+  /* These functions are to make the fields to REACT to changes from user input */
+  onDifficultyChange: function(e) {
+    this.props.onChange(Object.assign({}, this.props.value, {difficulty: e.target.value}));
   },
 
   onTitleChange: function(e) {
@@ -34,17 +37,21 @@ var ProjForm = React.createClass({
     this.props.onChange(Object.assign({}, this.props.value, {runcommand: e.target.value}));
   },
 
+  /* Submit function: parse the form object to JSON format */
   onSubmit: function(e) {
     e.preventDefault();
     this.props.onSubmit();
     var json_data = JSON.stringify(this.props.value);
     console.log(json_data);
+    fetch('http://opencode.me:8080/add_project', {
+      method: 'POST',
+      body: json_data,
+    });
   },
 
-
+  /* Form render function (does not actually render here) */
   render: function(){
     var errors = this.props.value.errors || {};
-
     return(
 
 
@@ -70,10 +77,10 @@ var ProjForm = React.createClass({
           value: this.props.value.description,
           onChange: this.onDescriptionChange,
         }),
-        React.createElement('input', {
+        React.createElement('textarea', {
           type: 'text',
           className: 'dependency', //errors.dependency && 'ProjForm-error',
-          placeholder: 'Dependencies *',
+          placeholder: 'Dependencies * e.g.: node , build-essential',
           value: this.props.value.dependency,
           onChange: this.onDependencyChange,
         }),
@@ -107,6 +114,7 @@ var ProjForm = React.createClass({
   },
 });
 
+/* Output function call: useless */
 var ProjItem = React.createClass({
   propTypes: {
     title: React.PropTypes.string.isRequired,
