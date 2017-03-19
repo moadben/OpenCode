@@ -62,8 +62,8 @@ function generateDockerFile(project){
 }
 
 function generateDockerFileContent(project){
-	var gitusername = project["gitusername"];
-	var gitprojectname = project["gitprojectname"];
+	var gitusername = project["username"];
+	var gitprojectname = project["title"];
 	var dependencies = project["dependencies"].join(" ");
 	var appport = project["appport"];
 	var runcommand = project["runcommand"];
@@ -98,8 +98,8 @@ function generateRunScriptFile(project){
 }
 
 function generateRunScriptFileContents(project){
-	var gitusername = project["gitusername"];
-	var gitprojectname = project["gitprojectname"];
+	var gitusername = project["username"];
+	var gitprojectname = project["title"];
 	var dependencies = project["dependencies"].join(" ");
 	var appport = project["appport"];
 	var runcommand = project["runcommand"];
