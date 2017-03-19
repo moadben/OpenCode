@@ -6,7 +6,7 @@ var Pidea = React.createClass({
   },
 
   componentDidMount: async function() {
-    const request = await fetch('/ideadata.json');
+    const request = await fetch('http://opencode.me:8080/ideas');
     const ideas = await request.json();
     this.setState({ ideas });
   },
@@ -22,9 +22,9 @@ var Pidea = React.createClass({
         {
             ideas.map(idea => {
             return (
-            <div key={idea.title}>
-              <p>{idea.title}</p>
-              <p>{idea.description}</p>
+            <div className='idea-cells' key={idea.ideaid}>
+              <p className='idea-title-p'>{idea.title}</p>
+              <p className='idea-des-p'>{idea.description}</p>
               <ul>
                 {
                   idea.discussion.comments.map(comment => <li key={comment.comment}>{comment.comment}</li>)
