@@ -131,13 +131,6 @@ func AddProjectComment(c *gin.Context) {
 	}
 }
 
-// Index renders the base index html file.
-func Index(c *gin.Context) {
-	c.HTML(http.StatusOK, "index.html", gin.H{
-		"title": "Index Page",
-	})
-}
-
 func main() {
 	//Flag initialization
 	DBConn := flag.String("DB", "test", "DB Connection string for ")
@@ -158,7 +151,6 @@ func main() {
 	r.LoadHTMLGlob("templates/*")
 
 	// GET
-	r.GET("/", Index)
 	r.GET("/projects", Projects)
 	r.GET("/ideas", Ideas)
 
