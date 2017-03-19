@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/moadben/OpenCode/databases"
@@ -84,6 +85,52 @@ func GetIdea(c *gin.Context) {
 	c.JSON(http.StatusOK, idea)
 }
 
+// AddIdeaComment is...
+func AddIdeaComment(c *gin.Context) {
+	id := c.Param("id")
+	idea, err := db.GetIdeaByID(id)
+	if err != nil {
+		c.String(400, err.Error())
+		return
+	}
+	var comment databases.Comment
+	err = c.BindJSON(&comment)
+	if err != nil {
+		c.String(400, err.Error())
+		return
+	}
+	comment.TimeStamp = time.Now()
+	idea.Discussion.Comments = append(idea.Discussion.Comments, comment)
+	err = db.UpdateIdeaEntry(idea)
+	if err != nil {
+		c.String(400, err.Error())
+		return
+	}
+}
+
+// AddProjectComment is...
+func AddProjectComment(c *gin.Context) {
+	id := c.Param("id")
+	project, err := db.GetProjectByID(id)
+	if err != nil {
+		c.String(400, err.Error())
+		return
+	}
+	var comment databases.Comment
+	err = c.BindJSON(&comment)
+	if err != nil {
+		c.String(400, err.Error())
+		return
+	}
+	comment.TimeStamp = time.Now()
+	project.Discussion.Comments = append(project.Discussion.Comments, comment)
+	err = db.UpdateProjectEntry(project)
+	if err != nil {
+		c.String(400, err.Error())
+		return
+	}
+}
+
 // Index is...
 func Index(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.html", gin.H{
@@ -120,6 +167,8 @@ func main() {
 
 	// POST
 	r.POST("/add_project", AddProject)
+	r.POST("/projects/:id/add_comment", AddProjectComment)
 	r.POST("/add_idea", AddIdea)
+	r.POST("/ideas/:id/add_comment", AddIdeaComment)
 	r.Run()
 }

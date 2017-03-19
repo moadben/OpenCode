@@ -2,6 +2,7 @@ package databases
 
 import (
 	"crypto/tls"
+	"fmt"
 	"net"
 	"strconv"
 	"time"
@@ -106,4 +107,27 @@ func (d *DocDB) GetIdeaByID(id string) (*Idea, error) {
 	var result Idea
 	err = Coll.Find(bson.M{"ideaid": intID}).One(&result)
 	return &result, err
+}
+
+// UpdateProjectEntry is ...
+func (d *DocDB) UpdateProjectEntry(project *Project) error {
+	d.Session.Refresh()
+	Coll := d.Session.DB("opencode").C("projects")
+
+	fmt.Println(project.ProjectID)
+	colQuerier := bson.M{"projectid": project.ProjectID}
+	change := bson.M{"$set": bson.M{"discussion": project.Discussion}}
+	err := Coll.Update(colQuerier, change)
+	return err
+}
+
+// UpdateIdeaEntry is ...
+func (d *DocDB) UpdateIdeaEntry(idea *Idea) error {
+	d.Session.Refresh()
+	Coll := d.Session.DB("opencode").C("ideas")
+
+	colQuerier := bson.M{"ideaid": idea.IdeaID}
+	change := bson.M{"$set": bson.M{"discussion": idea.Discussion}}
+	err := Coll.Update(colQuerier, change)
+	return err
 }
