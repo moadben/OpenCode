@@ -1,3 +1,4 @@
+
 body {
   background-color: rgba(0, 0, 0, 0.84);
 }
@@ -9,6 +10,7 @@ body {
   padding-left: 20px;
 }
 
+
 hr{
   border-color: rgb(68,217,230);
 }
@@ -17,13 +19,13 @@ p {
   font-size: 15px
 }
 
-#headerLine{
-  width: 88%;
+h4{
+  font-family: "glacial_indifferenceregular";
+  font-size: 20px;
 }
 
-#midLine{
-  width: 1px;
-  height: 570px;
+#headerLine{
+  width: 88%;
 }
 
 .partialLine{
@@ -63,7 +65,7 @@ p {
 
 .sections{
   background-color: rgba(77,121,126, 0.15);
-  height: 540px;
+  height: 500px;
   padding: 20px;
   font-family: "aileron-thin";
   color: rgba(255, 255, 255, 0.6);
@@ -85,4 +87,121 @@ p {
 .colIcons{
   width: 25px;
   height: auto;
+}
+
+
+.modalDialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+
+
+}
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+.modalDialog > div {
+    width: 60%;
+    height:80%;
+    position: relative;
+    padding: 5px 20px 13px 20px;
+    background-color: rgba(255,255,255,1);
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%,-50%);
+    color: rgba(0, 0, 0, 0.5);
+    overflow-y:scroll;
+}
+.close {
+    color: rgb(68,217,230);
+    line-height: 25px;
+    position: absolute;
+    right: 0px;
+    padding: 8px;
+    text-align: center;
+    top: 0px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.close:hover {
+    background: rgba(68,217,230,.5);
+}
+
+.innerModal{
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#createProjectModal{
+  font-size: 20px;
+  font-family: "aileron-thin";
+  letter-spacing: 6px;
+}
+
+#createIdeaModal{
+  font-size: 20px;
+  font-family: "aileron-thin";
+  letter-spacing: 6px;
+}
+
+.title-field, .description, .git-field, .description, .dependency, .initcommand, .runcommand, .apport, .runcommand, .idea-description, .idea-title, .idea-userid{
+  color: #000;
+  font-size: 10px;
+  font-family: "aileron-thin";
+  letter-spacing: 2px;
+  width: 400px;
+  height: 30px;
+  margin:10px;
+  border: none;
+  background-color: rgba(77,121,126, 0.02);
+}
+
+.submit {
+  margin: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  font-size: 10px;
+  font-family: "aileron-thin";
+  letter-spacing: 2px;
+  width: 200px;
+  height: 25px;
+  background-color: rgba(68,217,230,1);
+  color: rgba(255,255,255,1);
+  border: none;
+  right:50%;
+  transform: translate(50%);
+}
+
+.ProjForm, .IdeaForm{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%,-50%);
+}
+
+
+.IdeaView-title, .ProjView-title{
+  position: fixed;
+  text-align: center;
+  font-size: 30px;
+  font-family: "aileron-thin";
+  letter-spacing: 6px;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 20px;
 }

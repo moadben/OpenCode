@@ -1,3 +1,0 @@
-toHome(){
-  return 
-}
