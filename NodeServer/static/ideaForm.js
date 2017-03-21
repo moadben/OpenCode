@@ -28,7 +28,7 @@ var IdeaForm = React.createClass({
     this.props.onSubmit();
     var json_data = JSON.stringify(this.props.value);
     console.log(json_data);
-    fetch('http://localhost:8080/add_idea', {
+    fetch('http://opencode.me/add_idea', {
       method: 'POST',
       body: json_data,
     });

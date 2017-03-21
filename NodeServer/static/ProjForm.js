@@ -58,7 +58,7 @@ var ProjForm = React.createClass({
     //this.props.onSubmit();
     var json_data = JSON.stringify(this.props.value);
     console.log(json_data);
-    fetch('http://localhost:8080/add_project', {
+    fetch('http://opencode.me/add_project', {
       method: 'POST',
       body: json_data, 
     });

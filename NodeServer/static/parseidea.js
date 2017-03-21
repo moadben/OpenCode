@@ -6,7 +6,7 @@ var Pidea = React.createClass({
   },
 
   componentDidMount: async function() {
-    const request = await fetch('http://localhost:8080/ideas');
+    const request = await fetch('http://opencode.me/ideas');
     const ideas = await request.json();
     this.setState({ ideas });
   },
