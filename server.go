@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/itsjamie/gin-cors"
 	"github.com/moadben/OpenCode/databases"
 )
 
@@ -146,7 +147,18 @@ func main() {
 	db = &temp
 
 	//Running of server
-	r := gin.Default()
+	r := gin.New()
+
+	//Setting up CORS middleware
+	r.Use(cors.Middleware(cors.Config{
+		Origins:         "http://opencode.me",
+		Methods:         "GET, PUT, POST, DELETE",
+		RequestHeaders:  "Origin, Authorization, Content-Type",
+		ExposedHeaders:  "",
+		MaxAge:          50 * time.Second,
+		Credentials:     true,
+		ValidateHeaders: false,
+	}))
 
 	// GET
 	r.GET("/projects", Projects)
