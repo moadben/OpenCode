@@ -58,7 +58,7 @@ var ProjForm = React.createClass({
     //this.props.onSubmit();
     var json_data = JSON.stringify(this.props.value);
     console.log(json_data);
-    fetch('http://opencode.me/add_project', {
+    fetch('http://opencode.me:8080/add_project', {
       method: 'POST',
       body: json_data, 
     });
@@ -165,7 +165,7 @@ var ProjView = React.createClass({
 
     return (
       React.createElement('div', {className: 'ProjView'},
-        React.createElement('h1', {className: 'ProjView-title'}, "CREATE AN PROJECT"),
+        React.createElement('h1', {className: 'ProjView-title'}, "CREATE A PROJECT"),
         React.createElement(ProjForm, {
           value: this.props.newProj,
           onChange: this.props.onNewProjChange,

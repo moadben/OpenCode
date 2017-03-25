@@ -102,7 +102,7 @@ var IdeaView = React.createClass({
 
     return (
       React.createElement('div', {className: 'IdeaView'},
-        React.createElement('h1', {className: 'IdeaView-title'}, "CREATE AN IDEA"),
+        React.createElement('h1', {className: 'IdeaView-title'}, "CREATE A IDEA"),
     //    React.createElement('ul', {className: 'IdeaView-list'}, ideaItemElements),
         React.createElement(IdeaForm, {
           value: this.props.newIdea,

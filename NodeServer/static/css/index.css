@@ -1,47 +1,44 @@
-body{
-  background-image: url("../img/background.png");
+body {
+  font-family: 'Rubik', sans-serif;
 }
 
+
 h1,h2{
-  color: rgb(255, 255, 255);
+  color: #27AE60;
 }
 
 h1{
-  font-size: 56px;
-  font-family: "glacial_indifferencebold";
-  letter-spacing: 20px;
+  font-size: 42px;
+  letter-spacing: 5px;
 }
 
 h2{
-  font-size: 24px;
-  font-family: "glacial_indifferenceregular";
-  letter-spacing: 13px;
+  font-size: 32px;
+  color: #2FCB71;
+  letter-spacing: 2px;
 }
 
-#splash{
-  text-align: center;
+h3{
+  font-weight: 100;
+  color: #333333;
+  letter-spacing: 1px;
+}
 
+#sub-title{
+  font-weight: 100;
+  font-size: 38px;
+  color: #333333;
 }
 
 #opening{
-  position: absolute;
-  right: 50%;
-  top: 50%;
-  transform: translate(50%,-50%);
-  text-align: center;
-
-}
-
-#intro{
-  padding-top: 40px;
-  color: rgb(255, 255, 255);
+  /*padding-left: 40px;*/
 }
 
 #intro-line{
-  color: rgb(255, 255, 255);
+  color: #333333;
   font-size: 18px;
-  font-family: "aileron-thin";
-  letter-spacing: 10px;
+  font-family: "Rubik";
+  letter-spacing: 2px;
 }
 
 #arrowImg{
@@ -53,7 +50,77 @@ h2{
   height: auto;
 }
 
-button.signinButton{
+#parabutton {
+  /*margin: 0px 20px;*/
+  width: 100%;
+  margin: 0 50px;
+}
+
+#splash-paragraph {
+  margin-top:125px;
+  margin-left: 50px;
+  position: absolute;
+  right: 15%;
+  /*top: 50%;
+  transform: translateX(50%) translateY(-50%);*/
+}
+
+.col-6 {
+  width: 50%;
+  float: left;
+}
+
+.splash-items {
+  position: relative;
+  height: 300px;
+}
+
+#splash-button {
+  padding-top:150px;
+  position: absolute;
+  align-items: center;
+  right: 50%;
+  /*top: 50%;
+  transform: translateX(-50%) translateY(50%);*/
+  text-align: center;
+}
+
+#button-title {
+  margin:0px 0px;
+  /*text-align: center;*/
+}
+
+#splash {
+  height: 100%;
+}
+
+#splash-container {
+  /*width: 100%;
+  height: 100%;*/
+  padding: 3% 4%;
+  
+}
+
+#border-line {
+  border: 2px solid #2FCB71;
+}
+
+#github {
+  background-image: url("../img/git-button.png");
+  background-size: 190px 40px;
+  height: 40px;
+  width: 190px;
+  border: 0px white;
+  align-self: center;
+  margin-top:7px;
+}
+
+#parabutton {
+  margin-bottom:425px;
+  margin-top: 25px;
+}
+
+/*button.signinButton{
   margin-top: 30px;
   text-align: center;
   font-size: 13px;
@@ -64,4 +131,5 @@ button.signinButton{
   background-color: rgba(68,217,230,0.8);
   color: rgba(255,255,255,1);
   border: none;
-}
+}*/
+
