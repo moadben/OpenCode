@@ -8,18 +8,19 @@ h1,h2{
 }
 
 h1{
-  font-size: 42px;
+  font-size: 50px;
   letter-spacing: 5px;
 }
 
 h2{
-  font-size: 32px;
+  font-size: 34px;
   color: #2FCB71;
   letter-spacing: 2px;
 }
 
 h3{
   font-weight: 100;
+  font-size: 24px;
   color: #333333;
   letter-spacing: 1px;
 }
@@ -57,10 +58,8 @@ h3{
 }
 
 #splash-paragraph {
-  margin-top:125px;
-  margin-left: 50px;
+  margin-top:100px;
   position: absolute;
-  right: 15%;
   /*top: 50%;
   transform: translateX(50%) translateY(-50%);*/
 }
@@ -76,7 +75,7 @@ h3{
 }
 
 #splash-button {
-  padding-top:150px;
+  padding-top:125px;
   position: absolute;
   align-items: center;
   right: 50%;
@@ -97,7 +96,7 @@ h3{
 #splash-container {
   /*width: 100%;
   height: 100%;*/
-  padding: 3% 4%;
+  padding: 2% 4%;
   
 }
 
@@ -107,16 +106,16 @@ h3{
 
 #github {
   background-image: url("../img/git-button.png");
-  background-size: 190px 40px;
-  height: 40px;
-  width: 190px;
+  background-size: 210px 42px;
+  height: 42px;
+  width: 210px;
   border: 0px white;
   align-self: center;
   margin-top:7px;
 }
 
 #parabutton {
-  margin-bottom:425px;
+  margin-bottom:370px;
   margin-top: 25px;
 }
 
@@ -133,3 +132,12 @@ h3{
   border: none;
 }*/
 
+#why-container {
+  background-color: #f6f9fc;
+  /*width: 100%;
+  height: 100%;*/
+  padding: 4% 7%;
+  margin: 0px 0px;
+  padding-bottom:200px;
+  
+}
